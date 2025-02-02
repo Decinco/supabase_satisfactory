@@ -1,30 +1,30 @@
 import 'package:get/get.dart';
-import 'package:supabase_notes/app/data/models/notes_model.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
+import '../../../data/models/item_model.dart';
+
 class HomeController extends GetxController {
-  RxList allNotes = List<Notes>.empty().obs;
+  RxList allItems = List<Item>.empty().obs;
   SupabaseClient client = Supabase.instance.client;
 
-  Future<void> getAllNotes() async {
-    List<dynamic> res = await client
-        .from("users")
-        .select("id")
-        .match({"uid": client.auth.currentUser!.id});
-    Map<String, dynamic> user = (res).first as Map<String, dynamic>;
-    int id = user["id"]; //get user id before get all notes data
-    var notes = await client.from("notes").select().match(
-      {"user_id": id}, //get all notes data with match user id
-    );
-    List<Notes> notesData = Notes.fromJsonList((notes as List));
-    allNotes(notesData);
-    allNotes.refresh();
+  Future<void> getAllItems() async {
+    var items = await client.from("Items").select().order("id", ascending: true);
+    List<Item> itemsData = Item.fromJsonList((items as List));
+    allItems(itemsData);
+    allItems.refresh();
   }
 
-  Future<void> deleteNote(int id) async {
-    await client.from("notes").delete().match({
+  Future<String> getImageUrl(String filename) async {
+    return await client
+        .storage
+        .from('satisfactoryItems')
+        .getPublicUrl(filename);
+  }
+
+  Future<void> deleteItem(int id) async {
+    await client.from("Items").delete().match({
       "id": id,
     });
-    getAllNotes();
+    getAllItems();
   }
 }

@@ -12,6 +12,9 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_dotenv: ^5.0.2
+  enum_to_string: ^2.2.0
+  icon_font_generator: ^4.0.0
+  expandable_widgets: ^1.0.3+1
 
 dev_dependencies:
   flutter_lints: ^5.0.0
@@ -22,3 +25,23 @@ flutter:
   assets:
     - .env
   uses-material-design: true
+
+  fonts:
+    - family: "UIcons"
+      fonts:
+        - asset: "fonts/uicon.otf"
+
+icon_font:
+  input_svg_dir: "assets/uicons-bold-straight/svg"
+  output_font_file: "fonts/uicon.otf"
+
+  output_class_file: "lib/uicon.dart"
+  class_name: "UIcons"
+  format: true
+
+  font_name: "UIcons"
+  normalize: true
+  ignore_shapes: false
+
+  recursive: true
+  verbose: false

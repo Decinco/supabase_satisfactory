@@ -10,8 +10,9 @@ abstract class Routes {
   static const LOGIN = _Paths.LOGIN;
   static const REGISTER = _Paths.REGISTER;
   static const PROFILE = _Paths.PROFILE;
-  static const ADD_NOTE = _Paths.ADD_NOTE;
-  static const EDIT_NOTE = _Paths.EDIT_NOTE;
+  static const ADD_ITEM = _Paths.ADD_ITEM;
+  static const EDIT_ITEM = _Paths.EDIT_ITEM;
+  static const RECIPES = _Paths.RECIPES;
 }
 
 abstract class _Paths {
@@ -19,6 +20,7 @@ abstract class _Paths {
   static const LOGIN = '/login';
   static const REGISTER = '/register';
   static const PROFILE = '/profile';
-  static const ADD_NOTE = '/add-note';
-  static const EDIT_NOTE = '/edit-note';
+  static const ADD_ITEM = '/add-item';
+  static const EDIT_ITEM = '/edit-item';
+  static const RECIPES = '/recipes'; // recipes page
 }
