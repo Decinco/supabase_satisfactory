@@ -2,7 +2,6 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:supabase_notes/app/data/models/notes_model.dart';
 import 'package:supabase_notes/app/modules/home/controllers/home_controller.dart';
 
 import '../../../data/models/item_model.dart';

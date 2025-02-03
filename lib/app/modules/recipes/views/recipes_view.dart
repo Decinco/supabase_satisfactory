@@ -1,4 +1,6 @@
 import 'package:expandable_widgets/expandable_widgets.dart';
+import 'package:extended_tabs/extended_tabs.dart';
+import 'package:fanci/fanci.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:supabase_notes/app/routes/app_pages.dart';
@@ -152,6 +154,7 @@ class RecipesView extends GetView<RecipesController> {
                               ),
                             )))
                     : ListView.builder(
+                        physics: NeverScrollableScrollPhysics(),
                         shrinkWrap: true,
                         itemCount: recipe.ingredients.length,
                         itemBuilder: (context, index) {
@@ -194,6 +197,7 @@ class RecipesView extends GetView<RecipesController> {
                           ),
                         ))
                     : ListView.builder(
+                        physics: NeverScrollableScrollPhysics(),
                         shrinkWrap: true,
                         itemCount: recipe.products.length,
                         itemBuilder: (context, index) {
@@ -302,7 +306,7 @@ class RecipesView extends GetView<RecipesController> {
                 ]),
                 SizedBox(
                   height: 500,
-                  child: TabBarView(
+                  child: ExtendedTabBarView(
                     children: [
                       Obx(() => controller.itemRecipes.isEmpty
                           ? const Padding(
